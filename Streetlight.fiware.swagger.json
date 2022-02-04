@@ -1,0 +1,302 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Streetlight",
+      "version": "2022-04-22",
+      "license": {
+          "name": "OCF Data Model License",
+          "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
+          "x-copyright": "Copyright 2018-2022 Open Connectivity Foundation, Inc. All rights reserved."
+      },
+      "termsOfService": "https://openconnectivityfoundation.github.io/core/DISCLAIMER.md"
+    },
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/Streetlight" : {
+        "get": {
+          "description": "This Resource describes a streetlight.\nThe Property \"value\" is a boolean.\nA value of 'true' means that the streetlight is on.\nA value of 'false' means that the streetlight is off.\n",
+          "parameters": [
+            {"$ref": "#/parameters/interface"}
+          ],
+          "responses": {
+              "200": {
+                "description" : "",
+                "x-example":
+                  {
+                    "rt": ["oic.r.f.streetlight"],
+                    "if": ["oic.if.a", "oic.if.baseline"],
+                    "value": false
+                  },
+                "schema": { "$ref": "#/definitions/Streetlight" }
+              }
+          }
+        },
+        "post": {
+          "description": "",
+          "parameters": [
+            {"$ref": "#/parameters/interface"},
+            {
+              "name": "body",
+              "in": "body",
+              "required": true,
+              "schema": { "$ref": "#/definitions/Streetlight" },
+              "x-example":
+                {
+                  "value": true
+                }
+            }
+          ],
+          "responses": {
+              "200": {
+                "description" : "",
+                "x-example":
+                  {
+                    "value": true
+                  },
+                "schema": { "$ref": "#/definitions/Streetlight" }
+              }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "interface" : {
+        "in": "query",
+        "name": "if",
+        "type": "string",
+        "enum": ["oic.if.a", "oic.if.baseline"]
+      }
+    },
+    "definitions": {
+      "Streetlight" : {
+        "properties": {
+          "rt": {
+            "description": "The Resource Type.",
+            "items": {
+              "enum": ["oic.r.f.streetlight"],
+              "maxLength": 64,
+              "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true,
+            "readOnly": true,
+            "type": "array"
+          },
+          "value": {
+            "description": "The on/off status of the streetlight.",
+            "type": "boolean"
+          },
+          "address" : {
+            "description": "The address of the streetlight.",
+            "type": "string"
+          },
+          "alternateName" : {
+            "description": "An alternative name for this item.",
+            "type": "string"
+          },
+          "annotations" : {
+            "description": "Annotations about the streetlight",
+            "enum": [
+              "Annotation 1.",
+              "Annotation 2."
+            ],
+            "type": "string"
+          },
+          "areaServed" : {
+            "description": "The geographic area where a service or offered item is provided.",
+            "type": "string"
+          },
+          "circuit" : {
+            "description": "The circuit  which this streetlight connects to and gets power from. Typically it will contain and identifier that will allow it to obtain more information about such circuit",
+            "type": "string"
+          },
+          "color" : {
+            "description": "The color of the product.",
+            "type": "string"
+          },
+          "controllingMethod" : {
+            "description": "The method used to control this streetlight. Enum: 'group, individual'.",
+            "enum": [
+                "group",
+                "individual"
+            ],
+            "type": "string"
+          },
+          "current": {
+            "description": "Current value of the streetlight corresponding to this observation.",
+            "type": "integer"
+          },
+          "dataProvider" : {
+            "description": "A sequience of characters identifying the provider of the harmonised data entity.",
+            "type": "string"
+          },
+          "dateCreated" : {
+            "description": "Entity creation timestamp. This will usually be allocated by the storage platform.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "dateLastLampChange" : {
+            "description": "Timestamp of the  last change of lamp made.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "dateLastSwitchingOff" : {
+            "description": "Timestamp of the last switching off.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "dateLastSwitchingOn" : {
+            "description": "Timestamp of the last switching on.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "dateModified" : {
+            "description": "Timestamp of the last modification of the entity. This will usually be allocated by the storage platform.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "dateServiceStarted" : {
+            "description": "Date at which the streetlight started giving service.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "description" : {
+            "description": "The A description of this item.",
+            "type": "string"
+          },
+          "deviceInfo" : {},
+          "feederID" : {},
+          "feederPillarNum" : {
+            "description": "Streetlight feeder pillar information associated with the streetlight corresponding to this observation.",
+            "type": "string"
+          },
+          "illuminanceLevel": {
+            "description": "Relative illuminance level setting. A number between 0 and 1.",
+            "maximum": 1,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "image" : {
+            "description": "A URL containing a photo of the streetlight.",
+            "type": "string",
+            "format" : "uri"
+          },
+          "lanternHeight": {
+            "description": "Lantern's height. In columns with many arms this can vary between streetlights. Another variation source of this property are wall-mounted streetlights.",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "location": {},
+          "locationCategory" : {
+            "description": "Category of the location where the streetlight is placed. Enum: 'bridge, centralIsland facade, garden, park, parking, pedestrianPath, playground, road, sidewalk, tunnel'.",
+            "enum": [
+                "bridge", 
+                "centralIsland facade", 
+                "garden", 
+                "park", 
+                "parking", 
+                "pedestrianPath", 
+                "playground", 
+                "road", 
+                "sidewalk", 
+                "tunnel"
+              ],
+              "type": "string"
+          },
+          "munincipalityInfo" : {},
+          "name" : {
+            "description": "The name of this item.",
+            "type": "string"
+          },
+          "observationDateTime" : {
+            "description": "Last reported time of observation.",
+            "type": "string",
+            "format" : "date-time"
+          },
+          "owner" : {
+            "description": "Annotations about the streetlight",
+            "type": "string"
+          },
+          "powerConsumption": {
+            "description": "Power consumed by the LED or the streetlight bulb corresponding to this observation.",
+            "type": "integer"
+          },
+          "powerFactor": {
+            "description": "Power factor or the ratio of working power of the streetlight corresponding to this observation.",
+            "type": "integer"
+          },
+          "powerRating": {
+            "description": "Power rating of the LED or the streetlight bulb corresponding to this observation.",
+            "type": "integer"
+          },
+          "powerState": {
+            "description": "Streetlight's power state. Enum: 'bootingUp, low, off, on'.",
+            "enum": [
+                "bootingUp", 
+                "low", 
+                "off", 
+                "on"
+            ],
+            "type": "string"
+          },
+          "refDevice": {},
+          "refStreetlightControlCabinet": {},
+          "refStreetlightGroup": {},
+          "refStreetlightModel": {},
+          "seeAlso": {},
+          "source" : {
+            "description": "A sequence of characters giving the original source of the entity data as a URL. Recommended to be the fully qualified domain name of the source providor, or the URL to the source object",
+            "type": "string"
+          },
+          "status" : {
+            "description": "The overall status of this streetlight. Enum: 'brokenLantern, columnIssue, defectiveLamp, ok'.",
+            "enum": [
+                "brokenLantern", 
+                "columnIssue", 
+                "defectiveLamp", 
+                "ok"
+            ],
+            "type": "string"
+          },
+          "streetPoleNum" : {
+            "description": "Street pole information associated with the streetlight corresponding to this observation.",
+            "type": "string"
+          },
+          "type" : {
+            "description": "NGSI Entity type. It has to be Streetlight.",
+            "type": "string"
+          },
+          "voltage": {
+            "description": "Voltage value of the streetlight corresponding to this observation.",
+            "type": "integer"
+          },
+ 
+          "n": {
+              "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/n"
+          },
+          "id": {
+              "$ref": "https://openconnectivityfoundation.github.io/core/schemas/oic.common.properties.core-schema.json#/definitions/id"
+          },
+          "if": {
+            "description": "The OCF Interface set supported by this Resource.",
+            "items": {
+              "enum": [
+                "oic.if.a",
+                "oic.if.baseline"
+              ],
+              "type": "string"
+            },
+            "minItems": 2,
+            "uniqueItems": true,
+            "readOnly": true,
+            "type": "array"
+          }
+        },
+        "type": "object",
+        "required": ["value"]
+      }
+    }
+  }
+  
