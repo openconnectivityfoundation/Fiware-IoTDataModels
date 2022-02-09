@@ -5,8 +5,7 @@
       "version": "2022-04-22",
       "license": {
           "name": "OCF Data Model License",
-          "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md",
-          "x-copyright": "Copyright 2018-2022 Open Connectivity Foundation, Inc. All rights reserved."
+          "url": "https://github.com/openconnectivityfoundation/core/blob/e28a9e0a92e17042ba3e83661e4c0fbce8bdc4ba/LICENSE.md"
       },
       "termsOfService": "https://openconnectivityfoundation.github.io/core/DISCLAIMER.md"
     },
