@@ -3,22 +3,11 @@ name: CI-validate
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 
-#outputs:
-#  random-number:
-#    description: "Random number"
-#    value: ${{ steps.random-number-generator.outputs.random-id }}
-#runs:
-#  using: "composite"
-#  steps:
-#    - id: random-number-generator
-#      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-#      shell: bash
-
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -37,11 +26,10 @@ jobs:
       run:  |
         # Using github env (newline separated file list)
         # find . -type f \( -iname ".*" ! -iname ".htaccess" \)
-        # Refrige  Refrigera
         echo 'FILE_LIST<<EOF' >> $GITHUB_ENV
         find . -type f -iname "*.swagger.json" ! -name '*BaseResourceS*' >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
-        ## files not checked:
+        # files not checked:
         find . -type f -name '*BaseResourceS*'
         # Using step output (space separated file list)
         FILES="$(find . -type f -iname "*.json")"
