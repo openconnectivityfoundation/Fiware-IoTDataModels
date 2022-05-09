@@ -16,7 +16,7 @@
     "paths": {
       "/Starter" : {
         "get": {
-          "description": "This is a generic starter resource that can be used as a template for actual resources.\nThe Property \"value\" is a boolean.\nA value of 'true' means that the starter is on.\nA value of 'false' means that the starter is off.\n",
+          "description": "This is a generic starter resource that can be used as a template for actual resources.\nThe sample property \"value\" is a boolean.\nA value of 'true' means that the starter is on.\nA value of 'false' means that the starter is off.\n",
           "parameters": [
             {"$ref": "#/parameters/interface"}
           ],
